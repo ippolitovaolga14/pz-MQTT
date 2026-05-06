@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MQTT Publisher</title>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+  <h2>Publish</h2>
+  <input id="msg" placeholder="Message">
+  <button onclick="send()">Send</button>
+
+  <script>
+    const client = mqtt.connect('ws://localhost:9001');
+
+    function send() {
+      const msg = document.getElementById('msg').value;
+      client.publish('test/topic', msg);
+    }
+  </script>
+</body>
+</html>
